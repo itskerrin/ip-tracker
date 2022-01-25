@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const InfoCard = () => {
+const InfoCard = ({ ip, ipLocation, timezone, isp }) => {
   return (
     <>
       <Container>

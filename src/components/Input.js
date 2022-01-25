@@ -1,13 +1,27 @@
 import styled from 'styled-components';
+import { useState } from 'react';
 
-const Input = () => {
+const Input = ({ searchIP }) => {
+  const [inputValue, setInputValue] = useState('');
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    if (!inputValue) return;
+    // searchIP(inputValue);
+    console.log(inputValue);
+    setInputValue('');
+  };
   return (
     <>
       <Title>
         <Heading>IP Address Tracker</Heading>
       </Title>
-      <Form>
-        <input type="text"></input>
+      <Form onSubmit={handleFormSubmit}>
+        <input
+          type="text"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+        ></input>
         <Button type="submit">
           <i className="fas fa-chevron-right"></i>
         </Button>
@@ -45,7 +59,9 @@ const Button = styled.button`
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   padding: 1.2em;
+  padding-bottom: 1.3em;
   margin-left: -3em;
+  cursor: pointer;
 
   i {
     color: white;
