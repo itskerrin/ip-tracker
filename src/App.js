@@ -1,18 +1,35 @@
+import styled from 'styled-components';
+import headerImg from './images/pattern-bg.png';
 import InfoCard from './components/InfoCard';
 import Input from './components/Input';
 import Map from './components/Map';
 
 function App() {
   return (
-    <div>
-      <Input />
-      <InfoCard />
+    <>
+      <Background>
+        <FlexContainer>
+          <Input />
+          <InfoCard />
+        </FlexContainer>
+      </Background>
       <Map />
-    </div>
+    </>
   );
 }
 
 export default App;
+
+const FlexContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Background = styled.div`
+  background-image: url(${headerImg});
+`;
 
 // Todo
 /*

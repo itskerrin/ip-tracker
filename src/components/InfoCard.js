@@ -1,35 +1,60 @@
 import styled from 'styled-components';
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-`;
-
 const InfoCard = () => {
   return (
     <>
       <Container>
-        <div>
+        <Section>
           <span>IP ADDRESS</span>
           <p>192.212.174.101</p>
-        </div>
-        <div>
+        </Section>
+        <Section>
           <span>LOCATION</span>
           <p>Brooklyn, NY 10001</p>
-        </div>
-        <div>
+        </Section>
+        <Section>
           <span>TIMEZONE</span>
           <p>UTC -05:00</p>
-        </div>
-        <div>
+        </Section>
+        <Section>
           <span>ISP</span>
           <p>SpaceX Starlink</p>
-        </div>
+        </Section>
       </Container>
     </>
   );
 };
 
 export default InfoCard;
+
+const Container = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: white;
+  width: 80vw;
+  border-radius: 10px;
+  padding: 0.6em;
+  margin-top: 1.2em;
+  margin-bottom: -9em;
+  z-index: 100;
+`;
+
+const Section = styled.div`
+  padding: 0.6em 0;
+
+  span {
+    color: hsl(0, 0%, 59%);
+    font-size: 0.7em;
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+
+  p {
+    color: hsl(0, 0%, 17%);
+    margin-top: 0.5em;
+    font-weight: 500;
+  }
+`;
