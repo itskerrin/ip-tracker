@@ -7,10 +7,10 @@ const Input = ({ searchIP }) => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     if (!inputValue) return;
-    // searchIP(inputValue);
-    console.log(inputValue);
+    searchIP(inputValue);
     setInputValue('');
   };
+
   return (
     <>
       <Title>

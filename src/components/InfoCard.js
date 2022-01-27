@@ -6,19 +6,19 @@ const InfoCard = ({ ip, ipLocation, timezone, isp }) => {
       <Container>
         <Section>
           <span>IP ADDRESS</span>
-          <p>192.212.174.101</p>
+          <p>{ip}</p>
         </Section>
         <Section>
           <span>LOCATION</span>
-          <p>Brooklyn, NY 10001</p>
+          <p>{ipLocation}</p>
         </Section>
         <Section>
           <span>TIMEZONE</span>
-          <p>UTC -05:00</p>
+          <p>UTC {timezone}</p>
         </Section>
         <Section>
           <span>ISP</span>
-          <p>SpaceX Starlink</p>
+          <p>{isp}</p>
         </Section>
       </Container>
     </>
