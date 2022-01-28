@@ -45,6 +45,7 @@ function App() {
             ipLocation={IP.ipLocation}
             timezone={IP.timezone}
             isp={IP.isp}
+            country={IP.country}
           />
         </FlexContainer>
       </Background>

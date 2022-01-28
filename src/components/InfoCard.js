@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const InfoCard = ({ ip, ipLocation, timezone, isp }) => {
+const InfoCard = ({ ip, ipLocation, timezone, isp, country }) => {
   return (
     <>
       <Container>
@@ -10,7 +10,9 @@ const InfoCard = ({ ip, ipLocation, timezone, isp }) => {
         </Section>
         <Section>
           <span>LOCATION</span>
-          <p>{ipLocation}</p>
+          <p>
+            {ipLocation}, {country}
+          </p>
         </Section>
         <Section>
           <span>TIMEZONE</span>
