@@ -7,21 +7,32 @@ import Input from './components/Input';
 import Map from './components/Map';
 
 function App() {
-  const [IP, setIP] = useState('IP ADDRESS');
-  const [isp, setIsp] = useState('INTERNET SERVICE PROVIDER');
-  const [ipLocation, setIpLocation] = useState('REGION');
-  const [timezone, setTimezone] = useState('');
+  const [IP, setIP] = useState({
+    ip: 'IP ADDRESS',
+    ipLocation: 'REGION',
+    timezone: '',
+    isp: 'INTERNET SERVICE PROVIDER',
+    country: '',
+    lat: 51.501476,
+    lon: -0.140634,
+  });
 
   const searchIP = async (text) => {
     const response = await axios.get(
       `https://geo.ipify.org/api/v2/country,city?apiKey=at_zpSJBRpxX144DxUilmrP1C74H8Hk4&ipAddress=${text}`
     );
 
-    setIP(response.data['ip']);
-    setIsp(response.data['isp']);
-    setIpLocation(response.data['location']['region']);
-    setTimezone(response.data['location']['timezone']);
-    console.log(response);
+    setIP({
+      ip: response.data['ip'],
+      ipLocation: response.data['location']['region'],
+      timezone: response.data['location']['timezone'],
+      isp: response.data['isp'],
+      country: response.data['location']['country'],
+      lat: response.data['location']['lat'],
+      lon: response.data['location']['lng'],
+    });
+
+    // console.log(response.data);
   };
 
   return (
@@ -30,14 +41,14 @@ function App() {
         <FlexContainer>
           <Input searchIP={searchIP} />
           <InfoCard
-            ip={IP}
-            ipLocation={ipLocation}
-            timezone={timezone}
-            isp={isp}
+            ip={IP.ip}
+            ipLocation={IP.ipLocation}
+            timezone={IP.timezone}
+            isp={IP.isp}
           />
         </FlexContainer>
       </Background>
-      <Map ip={IP} />
+      <Map latitude={IP.lat} longitude={IP.lon} />
     </>
   );
 }
@@ -54,13 +65,3 @@ const FlexContainer = styled.div`
 const Background = styled.div`
   background-image: url(${headerImg});
 `;
-
-// Todo
-/*
-  Styling X
-  Import Ip address finder api
-  Get ip from search bar
-  Find ip location in api
-  Pass location to map
-  Display location and info in map
-*/
